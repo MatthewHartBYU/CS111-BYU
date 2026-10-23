@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="uname">
+        <br>
+        <br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw">
+        <br>
+        <br>
+        <label for="check">Remember me</label>
+        <input type="checkbox" id="checkBox">
+        <br>
+        <br>
+        <button id="submitButton">Login</button>
+    </body>
+    <script>
+        verify();
+        document.getElementById("submitButton").addEventListener("click", login);
+        function verify(){
+            if(document.getElementById("checkBox").checked){
+                alert("Credentials have been entered in the boxes as appropriate.");
+                var storedPassword = localStorage.getItem("Password");
+                var storedUsername = localStorage.getItem("Username");
+                document.getElementById("psw").value = storedPassword;
+                document.getElementById("uname").value = storedUsername;
+            }
+            
+        }
+        function login(){
+            var username = document.getElementById("uname").value;
+            var password = document.getElementById("psw").value;
+            if(document.getElementById("uname").value !== "" && document.getElementById("psw").value !== ""){
+                alert("Thank you for logging in.");
+                if(document.getElementById("checkBox").checked){
+                    localStorage.setItem("Username", username);
+                    localStorage.setItem("Password", password);
+                }
+            }
+            else{
+                alert("Please enter your username and password.");
+            }
+        }
+    </script>
+</html>

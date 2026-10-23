@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Local Storage</title>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="init()"> 
+        <label>Enter the String to Save Storage</label> 
+        <input type="text" id="country"><br><br>
+        <button onClick="saveToStorage()" id = "saveBtn">Save to Storage</button><br><br>
+        <button onClick="deleteStorage()" id = "deleteBtn">Delete Items</button> 
+        <h3 id = "title">Saved Countries:</h3>                           
+        <p id = "list"></p>                       
+    </body>
+    <script src="JavaScript/Code.js"></script>       
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Password Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Welcome to the Password Generator Site</h1>
+        <label>Enter the length of Password:</label>
+        <input type="text" id="length"><br><br>
+        <button id="submitButton">Generate Random Password</button>
+        <p id="password">Password Generated: </p>
+    </body>
+    <script>
+       document.getElementById("submitButton").addEventListener("click", generatePassword);
+      
+       function generatePassword(){ 
+           var lengthPassword = parseInt(document.getElementById("length").value);
+           if(document.getElementById("length") !== 0){
+               document.getElementById("length").value = "";
+           }
+           if(isNaN(lengthPassword)){
+               alert("Please enter a length.");
+               document.getElementById("length").value = "";
+           }
+           var alphabet = "abcdefghijklmnopqrstuvwxyz";
+           var capsAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+           var nums = "0123456789";
+           var possibleChar = alphabet + capsAlphabet + nums;
+           var password = ""; 
+           var numCaps = 0;
+           for(var i = 0; i<lengthPassword; i++){
+               var range = parseInt(Math.random() * possibleChar.length);  
+               var char = possibleChar[range];
+               password += char;
+               if(checkCurLetter(char)){
+                   numCaps++;
+               }
+               //if(numCaps > 2){
+                   //console.log("Password has more than 2 capital letters!");
+               //}
+           }
+           console.log(numCaps);
+           if(password.length > 0){
+                document.getElementById("password").innerHTML = " " + password;
+           }
+           var x = document.getElementById("password").innerText.length;
+           console.log(password);
+           //if(numCaps > 2){
+               //alert("Uh oh, passwords cannot have more than 2 capital letters!");
+               //document.getElementById("length").value = "";
+               //document.getElementById("password").value = "";
+               //location.reload();
+           //}
+       }
+       function checkCurLetter(curChar){
+           if(isNaN(curChar)){
+              return curChar === curChar.toUpperCase(); 
+           }
+           return;
+       }
+       
+    </script>
+</html>
